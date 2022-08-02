@@ -6,14 +6,17 @@ jobs:
       - image: cimg/base:stable
     steps:
       - run: return 1
-    
-  fail-hello:
-    docker:
-      - image: cimg/base:stable
-    steps:
       - run: 
           command: echo hello error
           when: on_fail
+    
+  # fail-hello:
+  #   docker:
+  #     - image: cimg/base:stable
+  #   steps:
+  #     - run: 
+  #         command: echo hello error
+  #         when: on_fail
 
       
 
