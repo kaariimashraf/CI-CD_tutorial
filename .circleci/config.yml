@@ -14,9 +14,10 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
-      - run: cat output.txt
       - attach_workspace:
           at: .
+      - run: cat output.txt
+      
 
 workflows:
   say-hello-workflow:
