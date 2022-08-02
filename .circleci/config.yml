@@ -16,7 +16,7 @@ jobs:
       - checkout
       - run:
           name: "Say Karim"
-          command: "echo << My_Name >>"
+          command: "echo $My_Name"
 
 workflows:
   say-hello-workflow:
