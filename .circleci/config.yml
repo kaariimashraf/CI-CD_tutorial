@@ -1,28 +1,23 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine.
 version: 2.1
 jobs:
-  save-hello:
+  error-hello:
     docker:
       - image: cimg/base:stable
     steps:
-      - run: echo Hello World! by karim > output.txt
-      - persist_to_workspace:
-          root: .
-          paths:
-            - "output.txt"
-  print-hello:
+      - run: return 1
+    
+  fail-hello:
     docker:
       - image: cimg/base:stable
     steps:
-      - attach_workspace:
-          at: .
-      - run: cat output.txt
+      - run: echo hello error
+    when: on_fail
+
       
 
 workflows:
   say-hello-workflow:
     jobs:
-      - save-hello
-      - print-hello: 
-           requires: 
-             - save-hello
+      - error-hello
+      
