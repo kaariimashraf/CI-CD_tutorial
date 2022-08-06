@@ -18,7 +18,7 @@ jobs:
                 --stack-name myStack-KarimAshraf \
                 --region us-east-1
     
-  # fail-hello:
+  # configure-aws-CLI:
   #   docker:
   #     - image: cimg/base:stable
   #   steps:
