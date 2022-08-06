@@ -33,7 +33,7 @@ jobs:
       - run:
           name: Run Playbook and Configure server
           command: |
-             ansible-playbook -i inventory.txt main.yml
+            (sleep 10; echo y;) | ansible-playbook -i inventory.txt main.yml
 
       
 
