@@ -40,6 +40,6 @@ jobs:
 workflows:
  CircleCI-workflow:
     jobs:
-      - create-infrastructure
-      #- configure_infrastructure
+      #- create-infrastructure
+      - configure_infrastructure
       
