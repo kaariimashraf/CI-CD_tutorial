@@ -18,13 +18,22 @@ jobs:
                 --stack-name myStack-KarimAshraf \
                 --region us-east-1
     
-  # configure-aws-CLI:
-  #   docker:
-  #     - image: cimg/base:stable
-  #   steps:
-  #     - run: 
-  #         command: echo hello error
-  #         when: on_fail
+  configure_infrastructure: 
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+              # You can get this ID in the section where you registered the SSH Key
+              fingerprints: ["ba:f7:9e:a1:12:ea:20:5d:11:da:bc:9e:3d:58:f5:05"] 
+      - run:
+          name: Install Ansible
+          command: |
+            apk add --update ansible
+      - run:
+          name: Run Playbook and Configure server
+          command: |
+            ansible-playbook -i inventory.txt main.yml
 
       
 
@@ -32,4 +41,5 @@ workflows:
  CircleCI-workflow:
     jobs:
       - create-infrastructure
+      #- configure_infrastructure
       
