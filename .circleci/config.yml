@@ -35,11 +35,27 @@ jobs:
           command: |
              ansible-playbook -i inventory.txt main.yml
 
+  Smoke-Test:
+    docker:
+      - image: alpine:latest
+    steps:
+      - run: apk add --update curl
+      - run:
+          name: Smoke test
+          command: |
+                  if curl -s --head https://blog.udacity.com
+                  then
+                    return 0
+                  else
+                    return 1
+                  fi
+
       
 
 workflows:
  CircleCI-workflow:
     jobs:
       #- create-infrastructure
-      - configure_infrastructure
+      #- configure_infrastructure
+       - Smoke-Test
       
