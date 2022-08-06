@@ -43,7 +43,7 @@ jobs:
       - run:
           name: Smoke test
           command: |
-                  if curl -s --head https://blog.udacity.com
+                  if curl -s --head https://blog.udacity.comuuu
                   then
                     return 0
                   else
